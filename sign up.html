@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dronlytics - Sign Up</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
+    /* SIGNUP SECTION */
+    .signup-section {
+      background-image: url('drone.png'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      min-height: calc(100vh - 64px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    /* SIGNUP BOX */
+    .signup-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: left;
+    }
+
+    .signup-box h2 {
+      margin-top: 0;
+      color: #002b5b;
+    }
+
+    .signup-box input[type="text"],
+    .signup-box input[type="email"],
+    .signup-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .signup-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #002b5b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-box button:hover {
+      background-color: #004080;
+    }
+
+    .signup-box .link {
+      margin-top: 10px;
+      display: block;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .signup-box .link a {
+      color: #002b5b;
+      text-decoration: none;
+    }
+
+    .signup-box .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-left">
+      <img src="dronlytics.png" alt="Dronlytics Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="home before login.html">Home</a>
+      <div class="dropdown" id="aboutDropdown">
+        <a href="javascript:void(0);" onclick="toggleDropdown()">About Us</a>
+        <div class="dropdown-content">
+          <a href="home before login.html#mission">Mission</a>
+          <a href="home before login.html#vision">Vision</a>
+          <a href="home before login.html#core">Core Value</a>
+          <a href="home before login.html#contact">Contact us</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <img src="picon.png" alt="User" width="26">
+      <a href="login.html">Login | Register</a>
+    </div>
+  </nav>
+
+  <!-- SIGNUP SECTION -->
+  <div class="signup-section">
+    <div class="signup-box">
+      <h2>Sign Up</h2>
+      <form action="home_after_signup.html" method="post">
+        <input type="text" name="fullname" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="link">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS: Dropdown Toggle -->
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById("aboutDropdown");
+      dropdown.classList.toggle("show");
+    }
+
+    // Close dropdown if clicked outside
+    window.addEventListener("click", function(e) {
+      const dropdown = document.getElementById("aboutDropdown");
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>

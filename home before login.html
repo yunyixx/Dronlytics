@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dronlytics</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* === NAVIGATION === */
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      position: relative;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-weight: normal;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
+    /* === SECTIONS === */
+    .hero {
+      background-image: url('drone.png');
+      background-size: cover;
+      background-position: center;
+      color: #002b5b;
+      padding: 100px 40px 80px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: #002b5b;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 60px 40px;
+      background-color: #f5f8ff;
+      border-bottom: 1px solid #ccc;
+    }
+
+    section h2 {
+      color: #002b5b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === NAVIGATION === -->
+  <nav>
+    <div class="nav-left">
+      <img src="dronlytics.png" alt="Dronlytics Logo">
+    </div>
+    <div class="nav-links">
+      <a href="#top">Home</a>
+      <div class="dropdown" id="aboutDropdown">
+        <a href="javascript:void(0);" onclick="toggleDropdown()">About Us</a>
+        <div class="dropdown-content">
+          <a href="#mission">Mission</a>
+          <a href="#vision">Vision</a>
+          <a href="#core">Core Value</a>
+          <a href="#contact">Contact us</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <img src="picon.png" alt="User" width="26">
+      <a href="login.html">Login | Register</a>
+    </div>
+  </nav>
+
+  <!-- === HERO SECTION === -->
+  <div class="hero">
+    <h1>Welcome to Dronlytics!</h1>
+    <p>Dronlytics leverages drone technology and deep learning to detect surface defects in solar panels—ensuring faster inspections, accurate diagnoses, and smarter maintenance through real-time image analysis and dashboard visualization.</p>
+    <a href="sign up.html" class="cta-button">Sign up to upload your first image</a>
+  </div>
+
+  <!-- === ABOUT US SECTIONS === -->
+  <section id="mission">
+    <h2>Mission</h2>
+    <p>Our mission is to enable fast and accurate solar panel inspections through smart drone technology.</p>
+  </section>
+
+  <section id="vision">
+    <h2>Vision</h2>
+    <p>Our vision is to become the global leader in automated solar defect detection.</p>
+  </section>
+
+  <section id="core">
+    <h2>Core Value</h2>
+    <p>Innovation. Precision. Sustainability. Trust.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@dronlytics.com<br>Phone: +60 123-456-789</p>
+  </section>
+
+  <!-- === JS FOR CLICK-TOGGLE === -->
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById("aboutDropdown");
+      dropdown.classList.toggle("show");
+    }
+
+    // Close the dropdown if clicking outside
+    window.addEventListener("click", function (e) {
+      const dropdown = document.getElementById("aboutDropdown");
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>

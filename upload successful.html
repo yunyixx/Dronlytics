@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dronlytics - Upload Success</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
+    /* MAIN SECTION */
+    .upload-container {
+      background-image: url('sky.png');
+      background-size: cover;
+      background-position: center;
+      min-height: calc(100vh - 64px);
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    .message-box {
+      background-color: #7aa8f7;
+      color: #002b5b;
+      text-align: center;
+      padding: 50px 30px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .check-icon {
+      font-size: 36px;
+      background-color: #002b5b;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .message-box h2 {
+      margin-top: 0;
+      font-weight: bold;
+    }
+
+    .message-box a {
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #002b5b;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .message-box a:hover {
+      color: #001d3a;
+    }
+
+    /* HISTORY ICON TOP RIGHT */
+    .history-link {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      text-decoration: none;
+      color: #002b5b;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .history-link img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- === NAVIGATION BAR === -->
+<nav>
+  <div class="nav-left">
+    <img src="dronlytics.png" alt="Dronlytics Logo" />
+  </div>
+
+  <div class="nav-links">
+    <a href="home after login.html">Home</a>
+
+    <!-- About Us Dropdown -->
+    <div class="dropdown" id="aboutDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('aboutDropdown')">About us</a>
+      <div class="dropdown-content">
+        <a href="home after login.html#mission">Mission</a>
+        <a href="home after login.html#vision">Vision</a>
+        <a href="home after login.html#core">Core Value</a>
+        <a href="home after login.html#contact">Contact us</a>
+      </div>
+    </div>
+
+    <!-- Service Dropdown -->
+    <div class="dropdown" id="serviceDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('serviceDropdown')">Service</a>
+      <div class="dropdown-content">
+        <a href="upload image.html">Upload</a>
+        <a href="history.html">History</a>
+      </div>
+    </div>
+
+    <a href="overview.html">Overview</a>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
+
+  <div class="nav-right">
+    <img src="picon.png" alt="User Icon" width="26">
+    <a href="home before login.html">Log Out</a>
+  </div>
+</nav>
+
+<!-- === JS: DROPDOWN TOGGLE === -->
+<script>
+  function toggleDropdown(id) {
+    document.querySelectorAll('.dropdown').forEach(el => {
+      if (el.id !== id) el.classList.remove('show');
+    });
+    document.getElementById(id).classList.toggle("show");
+  }
+
+  window.addEventListener("click", function (e) {
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  });
+</script>
+
+<!-- === MAIN CONTENT === -->
+<div class="upload-container">
+
+  <!-- History Button Top Right -->
+  <a class="history-link" href="history.html">
+    <img src="history.png" alt="History Icon">
+    History
+  </a>
+
+  <div class="message-box">
+    <div class="check-icon">✔</div>
+    <h2>Your image has been successfully uploaded.</h2>
+    <a href="overview.html" target="_blank">Click here for your result</a>
+  </div>
+
+</div>
+
+</body>
+</html>

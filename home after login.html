@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Dronlytics</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background-image: url('drone.png'); /* 🔁 Replace with your image */
+      background-size: cover;
+      background-position: center;
+      color: #002b5b;
+      padding: 100px 40px;
+      text-align: left;
+    }
+
+    .hero-content {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- === NAVIGATION BAR === -->
+<nav>
+  <div class="nav-left">
+    <img src="dronlytics.png" alt="Dronlytics Logo" />
+  </div>
+
+  <div class="nav-links">
+    <a href="home after login.html">Home</a>
+
+    <!-- About Us (same-page sections on home.html) -->
+    <div class="dropdown" id="aboutDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('aboutDropdown')">About Us</a>
+      <div class="dropdown-content">
+        <a href="#mission">Mission</a>
+          <a href="#vision">Vision</a>
+          <a href="#core">Core Value</a>
+          <a href="#contact">Contact us</a>
+      </div>
+    </div>
+
+    <!-- Service (external pages) -->
+    <div class="dropdown" id="serviceDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('serviceDropdown')">Service</a>
+      <div class="dropdown-content">
+        <a href="upload image.html">Upload</a>
+        <a href="history.html">History</a>
+      </div>
+    </div>
+
+    <a href="no overview.html">Overview</a>
+    <a href="no dashboard.html">Dashboard</a>
+  </div>
+
+  <div class="nav-right">
+    <img src="picon.png" alt="User Icon" width="26">
+    <a href="home before login.html">Log Out</a>
+  </div>
+</nav>
+
+<!-- === HERO SECTION === -->
+<div class="hero">
+  <div class="hero-content">
+    <h3>Welcome, xxx</h3>
+    <h1>Welcome to Dronlytics!</h1>
+    <p>
+      Dronlytics leverages drone technology and deep learning to detect surface defects in solar panels—
+      ensuring faster inspections, accurate diagnoses, and smarter maintenance through real-time image
+      analysis and dashboard visualization.
+    </p>
+  </div>
+</div>
+
+<!-- === ABOUT US SECTIONS === -->
+  <section id="mission">
+    <h2>Mission</h2>
+    <p>Our mission is to enable fast and accurate solar panel inspections through smart drone technology.</p>
+  </section>
+
+  <section id="vision">
+    <h2>Vision</h2>
+    <p>Our vision is to become the global leader in automated solar defect detection.</p>
+  </section>
+
+  <section id="core">
+    <h2>Core Value</h2>
+    <p>Innovation. Precision. Sustainability. Trust.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@dronlytics.com<br>Phone: +60 123-456-789</p>
+  </section>
+
+<!-- === JS TO TOGGLE DROPDOWNS === -->
+<script>
+  function toggleDropdown(id) {
+    document.querySelectorAll('.dropdown').forEach(el => {
+      if (el.id !== id) el.classList.remove('show');
+    });
+    document.getElementById(id).classList.toggle('show');
+  }
+
+  // Close dropdowns if clicking outside
+  window.addEventListener("click", function (e) {
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

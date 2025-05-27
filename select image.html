@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Gallery - Dronlytics</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
+    /* MAIN SECTION */
+    .gallery-section {
+      background-image: url('sky.png'); /* 🔁 Replace */
+      background-size: cover;
+      background-position: center;
+      min-height: calc(100vh - 64px);
+      padding: 40px;
+      color: #002b5b;
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 20px;
+    }
+
+    .image-grid .image-box {
+      border: 3px solid #94b3da;
+      border-radius: 6px;
+      background-color: #fff;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .site-button {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .site-button button {
+      background-color: #002b5b;
+      color: white;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .site-button button:hover {
+      background-color: #004080;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- === NAVIGATION BAR === -->
+<nav>
+  <div class="nav-left">
+    <img src="dronlytics.png" alt="Dronlytics Logo" />
+  </div>
+
+  <div class="nav-links">
+    <a href="home after login.html">Home</a>
+
+    <!-- About Us Dropdown (link to home.html#...) -->
+    <div class="dropdown" id="aboutDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('aboutDropdown')">About us</a>
+      <div class="dropdown-content">
+        <a href="home after login.html#mission">Mission</a>
+        <a href="home after login.html#vision">Vision</a>
+        <a href="home after login.html#core">Core Value</a>
+        <a href="home after login.html#contact">Contact us</a>
+      </div>
+    </div>
+
+    <!-- Service Dropdown -->
+    <div class="dropdown" id="serviceDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('serviceDropdown')">Service</a>
+      <div class="dropdown-content">
+        <a href="upload image.html">Upload</a>
+        <a href="history.html">History</a>
+      </div>
+    </div>
+
+    <a href="no overview.html">Overview</a>
+    <a href="no dashboard.html">Dashboard</a>
+  </div>
+
+  <div class="nav-right">
+    <img src="picon.png" alt="User Icon" width="26">
+    <a href="home before login.html">Log Out</a>
+  </div>
+</nav>
+
+<!-- === JS: DROPDOWN TOGGLE === -->
+<script>
+  function toggleDropdown(id) {
+    document.querySelectorAll('.dropdown').forEach(el => {
+      if (el.id !== id) el.classList.remove('show');
+    });
+    document.getElementById(id).classList.toggle("show");
+  }
+
+  window.addEventListener("click", function (e) {
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  });
+</script>
+
+  <!-- GALLERY SECTION -->
+  <div class="gallery-section">
+    <div class="gallery-header">
+      <div>Project Name</div>
+      <div>Select <input type="checkbox" /></div>
+    </div>
+
+    <div class="image-grid">
+      <!-- Replace the empty divs below with actual <img src="..." /> elements -->
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+      <div class="image-box"><img src="placeholder.jpg" alt="User image" /></div>
+    </div>
+
+    <div class="site-button">
+  <a href="site name.html">
+    <button>Site</button>
+  </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dronlytics - Overview</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+
+    .dashboard-container {
+      background-color: #e3f2fd;
+      padding: 30px;
+    }
+
+    .project-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #0b2e59;
+    }
+
+    .image-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .image-box {
+      width: 45%;
+      height: 200px;
+      background-color: #cfd8dc;
+      border: 2px solid #90a4ae;
+    }
+
+    .dropdown-box {
+      width: 150px;
+      background-color: #d1d9ff;
+      padding: 10px;
+      border-radius: 5px;
+      color: #0b2e59;
+    }
+
+    .dropdown-box select {
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+      background-color: white;
+    }
+
+    .stats-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      width: 23%;
+      background-color: #a0bff9;
+      padding: 20px;
+      border-radius: 8px;
+      color: #0b2e59;
+      font-weight: bold;
+      box-shadow: 4px 4px 0px #0b2e59;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- === NAVIGATION BAR === -->
+<nav>
+  <div class="nav-left">
+    <img src="dronlytics.png" alt="Dronlytics Logo" />
+  </div>
+
+  <div class="nav-links">
+    <a href="home after login.html">Home</a>
+
+    <!-- About Us Dropdown -->
+    <div class="dropdown" id="aboutDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('aboutDropdown')">About us</a>
+      <div class="dropdown-content">
+        <a href="home after login.html#mission">Mission</a>
+        <a href="home after login.html#vision">Vision</a>
+        <a href="home after login.html#core">Core Value</a>
+        <a href="home after login.html#contact">Contact us</a>
+      </div>
+    </div>
+
+    <!-- Service Dropdown -->
+    <div class="dropdown" id="serviceDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('serviceDropdown')">Service</a>
+      <div class="dropdown-content">
+        <a href="upload image.html">Upload</a>
+        <a href="history.html">History</a>
+      </div>
+    </div>
+
+    <a href="overview.html">Overview</a>
+    <a href="dashboard.html">Dashboard</a>
+  </div>
+
+  <div class="nav-right">
+    <img src="picon.png" alt="User Icon" width="26">
+    <a href="home before login.html">Log Out</a>
+  </div>
+</nav>
+
+<!-- === JS: DROPDOWN TOGGLE === -->
+<script>
+  function toggleDropdown(id) {
+    document.querySelectorAll('.dropdown').forEach(el => {
+      if (el.id !== id) el.classList.remove('show');
+    });
+    document.getElementById(id).classList.toggle("show");
+  }
+
+  window.addEventListener("click", function (e) {
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  });
+</script>
+
+<!-- === MAIN DASHBOARD CONTENT === -->
+<div class="dashboard-container">
+  <div class="project-title">Project Name: <span style="font-weight: normal;">Site Name</span></div>
+
+  <div class="image-section">
+    <div class="image-box"><!-- Left Image Placeholder --></div>
+    <div class="image-box"><!-- Heatmap Placeholder --></div>
+    <div class="dropdown-box">
+      <label for="image-select"><strong>Image:</strong></label><br>
+      <select id="image-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="stats-section">
+    <div class="stat-card">Total Panels:<br> </div>
+    <div class="stat-card">Healthy Panels:<br> </div>
+    <div class="stat-card">Defect Panels:<br> </div>
+    <div class="stat-card">Defection Rate:<br> </div>
+  </div>
+</div>
+
+<!-- === POWER BI IFRAME === -->
+<iframe 
+  title="Dronlytics Dashboard"
+  width="100%" 
+  height="700" 
+  src="https://app.powerbi.com/view?r=eyJrIjoiZjQwN2E0YTQtYjg0OS00YjBiLTlkZTAtM2M0MWFmN2VmYmI4IiwidCI6IjUzN2MyYmUxLWZjZDQtNDVhOS04M2IzLTY2NTNlYWNjNTA3MCIsImMiOjEwfQ%3D%3D"
+  frameborder="0" 
+  allowFullScreen="true">
+</iframe>
+
+</body>
+</html>

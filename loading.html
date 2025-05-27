@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Uploading... - Dronlytics</title>
+
+  <script>
+  // Redirect after 2 seconds
+  setTimeout(function() {
+    window.location.href = "upload successful.html"; // 🔁 Replace with your target page
+  }, 2000); // 2000ms = 2 seconds
+</script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* NAV BAR */
+    nav {
+      background-color: #002b5b;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+    }
+
+    .nav-left img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+.dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background-color: #fff;
+      min-width: 150px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      color: #002b5b;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown.show .dropdown-content {
+      display: block;
+    }
+    /* MAIN SECTION */
+    .uploading-section {
+      background-image: url('sky.png'); /* 🔁 Replace with your background */
+      background-size: cover;
+      background-position: center;
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #002b5b;
+      text-align: center;
+    }
+
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #002b5b;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .upload-text {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === NAVIGATION BAR === -->
+<nav>
+  <div class="nav-left">
+    <img src="dronlytics.png" alt="Dronlytics Logo" />
+  </div>
+
+  <div class="nav-links">
+    <a href="home after login.html">Home</a>
+
+    <!-- About Us Dropdown (link to home.html#...) -->
+    <div class="dropdown" id="aboutDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('aboutDropdown')">About us</a>
+      <div class="dropdown-content">
+        <a href="home after login.html#mission">Mission</a>
+        <a href="home after login.html#vision">Vision</a>
+        <a href="home after login.html#core">Core Value</a>
+        <a href="home after login.html#contact">Contact us</a>
+      </div>
+    </div>
+
+    <!-- Service Dropdown -->
+    <div class="dropdown" id="serviceDropdown">
+      <a href="javascript:void(0);" onclick="toggleDropdown('serviceDropdown')">Service</a>
+      <div class="dropdown-content">
+        <a href="upload image.html">Upload</a>
+        <a href="history.html">History</a>
+      </div>
+    </div>
+
+    <a href="no overview.html">Overview</a>
+    <a href="no dashboard.html">Dashboard</a>
+  </div>
+
+  <div class="nav-right">
+    <img src="picon.png" alt="User Icon" width="26">
+    <a href="home before login.html">Log Out</a>
+  </div>
+</nav>
+
+<!-- === JS: DROPDOWN TOGGLE === -->
+<script>
+  function toggleDropdown(id) {
+    document.querySelectorAll('.dropdown').forEach(el => {
+      if (el.id !== id) el.classList.remove('show');
+    });
+    document.getElementById(id).classList.toggle("show");
+  }
+
+  window.addEventListener("click", function (e) {
+    const dropdowns = document.querySelectorAll(".dropdown");
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+      }
+    });
+  });
+</script>
+
+
+  <!-- MAIN UPLOADING SECTION -->
+  <div class="uploading-section">
+    <div class="spinner"></div>
+    <div class="upload-text">Uploading your image....</div>
+  </div>
+
+</body>
+</html>
